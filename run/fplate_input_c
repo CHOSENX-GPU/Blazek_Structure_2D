@@ -1,0 +1,120 @@
+# Title
+Laminar flat plate, 160x64 cells
+#
+# Grid file (in)
+fplate.grd
+#
+# Grid topology (in)
+fplate.top
+#
+# Flow field to plot (out); 5 digit iteration number and .v2d will be added
+fplate_iso_c
+#
+# Surface quantities to plot (out); 5 digit iter. number and .v2d will be added
+fplate_surf_c
+#
+# Convergence history (out); .v2d will be added
+fplate_conv_c
+#
+# Restart solution (in)
+solin
+#
+# Restart solution (out)
+solout
+#
+# Physics - general
+# -----------------
+ E         # E=external flow, I=internal flow
+ N         # E=Euler (inviscid) / N=Navier-Stokes (laminar)
+ 1.4       # ratio of specific heats
+ 1004.5    # specific heat coeff. at constant pressure [J/kgK]
+ 5000.     # Reynolds number
+ 0.0       # reference velocity (internal flow only) [m/s]
+ 0.0       # reference density (internal flow only) [kg/m^3]
+ 0.72      # laminar Prandtl number
+#
+# Physics - external flow
+# -----------------------
+ 0.5       # Mach-number at infinity
+ 0.0       # angle of attack [deg]
+ 1.0E+5    # static pressure at infinity [Pa]
+ 288.15    # static temperature at infinity [K]
+#
+# Physics - internal flow
+# -----------------------
+ 0.0       # total pressure at inlet [Pa]
+ 0.0       # total temperature at inlet [K]
+ 0.0       # flow angle at inlet (with x-axis) [deg]
+ 0.0       # static pressure at outlet [Pa]
+ 0.0       # approximate flow angle at outlet (with x-axis) [deg]
+ 1.0       # approximate ratio of inlet to outlet static pressure
+#
+# Physics - injection boundary
+# ----------------------------
+ 0.0       # mass flow rate [kg/m^2*s]
+ 0.0       # injection temperature [K]
+#
+# Geometrical reference values
+# ----------------------------
+ 0.75      # x-coordinate of reference point (moment coefficient) [m]
+ 0.0       # y-coordinate            - '' -                       [m]
+ 1.0       # reference or chord length [m]
+#
+# Iteration control
+# -----------------
+ 5000      # max. number of iterations
+ 99999     # number of iterations between solution dumps
+ 1.0E-5    # convergence tolerance
+ N         # use previous solution for restart (Y=yes, N=no)
+#
+# Numerical parameters
+# --------------------
+ 7.5       # CFL-number
+ 0.8       # coefficient of implicit residual smoothing (<0 = no smoothing)
+ L         # L=local, G=global time-stepping
+ N         # low Mach-number preconditioning (Y=yes, N=no)
+ 0.15      # preconditioning parameter K
+ C         # central scheme (C) or Roe's upwind scheme (R)
+ 0.0       # artificial dissipation coefficient - k2
+ 256.0     # artificial dissipation coefficient - 1/k4
+ 2         # 1st-order (1) / 2nd-order (2) Roe scheme
+ 100.0     # limiter coefficient (Roe's scheme)
+ 0.05      # entropy correction coefficient (Roe's scheme)
+ N         # correction of far-field due to single vortex (Y/N - external flow)
+ 3         # pressure extrapolation to walls (2- or 3-point formula)
+ 1.0       # max. rel. change of rho and rho*E at dummy cells of slip walls
+ 0.2       # max. rel. change of rho and rho*E at dummy cells of injection b.
+ 5         # number of stages
+ 0.2500, 0.1667, 0.3750, 0.5000, 1.000    # stage coefficients
+ 1.00  , 0.00  , 0.56  , 0.00  , 0.44     # dissipation blending coeff.
+ 1     , 0     , 1     , 0     , 1        # dissipation evaluation (1=yes)
+#
+# Quantities to plot (Y=yes, N=no)
+# --------------------------------
+ Y   # density
+ Y   # u-velocity
+ Y   # v-velocity
+ Y   # static pressure
+ Y   # total pressure
+ Y   # static temperature
+ Y   # total temperature
+ Y   # local Mach-number
+ N   # isentropic Mach-number
+ Y   # total pressure loss
+ Y   # laminar viscosity (only if present)
+ Y   # skin friction coefficient (boundaries only)
+ N   # pressure coefficient (boundaries only)
+
+##############################################################################
+
+ 0.2500, 0.1667, 0.3750, 0.5000, 1.000    # stage coefficients (central scheme)
+ 1.00  , 0.00  , 0.56  , 0.00  , 0.44     # dissipation blending coeff.
+ 1     , 0     , 1     , 0     , 1        # dissipation evaluation (1=yes)
+
+ 0.0695, 0.1602, 0.2898, 0.5060, 1.000    # stage coefficients (Roe scheme)
+ 1.00  , 1.00  , 1.00  , 1.00  , 1.00     # dissipation blending coeff.
+ 1     , 1     , 1     , 1     , 1        # dissipation evaluation (1=yes)
+
+ 0.2742, 0.2067, 0.5020, 0.5142, 1.000    # stage coefficients (Roe scheme, viscous)
+ 1.00  , 0.00  , 0.56  , 0.00  , 0.44     # dissipation blending coeff.
+ 1     , 0     , 1     , 0     , 1        # dissipation evaluation (1=yes)

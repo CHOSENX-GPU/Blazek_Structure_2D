@@ -1,0 +1,24 @@
+# NACA 0012 airfoil
+#
+# no. of segments
+     6
+#
+# no. of cells in i-, j-direction
+   280    60
+#
+# segments (cell-centred index!):
+#
+# itype lb  lbeg  lend  lbs  lbegs  lends
+#
+# cut 1
+   700   1     2    61    1    281    222
+# wall
+   300   1    62   221    0      0      0
+# cut 2
+   700   1   222   281    1     61      2
+# farfield
+   600   2     2    61    0      0      0
+# farfield
+   600   3     2   281    0      0      0
+# farfield
+   600   4     2    61    0      0      0
